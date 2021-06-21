@@ -17,7 +17,7 @@ class Car(models.Model):
     name = models.CharField(max_length=100)
     vin_number = models.CharField(max_length=100)
     color = models.CharField(max_length=100, default='White')
-    made_date = models.DateField(auto_now=True)
+    made_date = models.DateField(default='yyyy-mm-dd')
     type_of_car = models.CharField(
         choices=types,
         default=types[0],
