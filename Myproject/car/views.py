@@ -4,6 +4,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .models import Car, CarModel
 from .forms import CarForm, CarModelForm
+from .models import Car
+from .forms import CarForm
 from django.views.generic.edit import CreateView
 
 
