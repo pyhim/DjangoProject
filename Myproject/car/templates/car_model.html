@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>CarModel</h1>
+<h2>{{car_model.name}}</h2>
+<p class="h5">{{car.company}}</p>
+<div class="row">
+  <div class="col-12">
+    {% lorem 3 p %}
+  </div>
+</div>
+{% endblock content %}

@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from car.models import Car
-from car.forms import CarForm
+from .models import Car, CarModel
+from .forms import CarForm, CarModelForm
 from django.views.generic.edit import CreateView
+
+
 # Create your views here.
 
 class CarListView(ListView):
-
     template_name = "car_list.html"
 
     model = Car
@@ -16,9 +18,9 @@ class CarListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            "title":"List of car",
+            "title": "List of car",
             "list_len": len(context["car_list"])
-            })
+        })
         return context
 
 
@@ -33,25 +35,40 @@ class CarDetailView(DetailView):
 
 
 class CarCreateView(CreateView):
-
     template_name = "car_create.html"
 
     model = Car
     form_class = CarForm
 
-# def car_create(request):
-#     if request.method == "POST":
-#         form = CarForm(request.POST)
-#         print("post")
-#         if form.is_valid():
-#             form.save()
-#             return redirect("car-detail", pk=form.instance.pk)
-#     form = CarForm()
-#     return render(request,"car_create.html",{"form":form})
 
-# def car_view(request, obj=None):
-#     car = get_object_or_404(Car,pk=obj)
-#     context= {
-#         "car":car
-#     }
-#     return render(request,"car.html", context)
+class CarModelDetailView(DetailView):
+    template_name = 'car_model.html'
+
+    model = CarModel
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
+
+
+class CarModelListView(ListView):
+    template_name = 'car_model_list.html'
+
+    model = CarModel
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            "title": "List of car models",
+
+        })
+        return context
+
+
+class CarModelCreateView(CreateView):
+    template_name = 'car_model_create.html'
+
+    model = CarModel
+    form_class = CarModelForm

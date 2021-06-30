@@ -52,6 +52,9 @@ class CarModel(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('car-model-detail', kwargs={'pk': self.pk})
+
 
 class Company(models.Model):
     name = models.CharField(max_length=100)
