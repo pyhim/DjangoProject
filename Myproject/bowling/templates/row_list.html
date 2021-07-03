@@ -10,10 +10,10 @@
     <h3>{{date_now}}</h3>
   </div>
   <div class="col-4">
-    <a class="btn btn-primary" href="{% url 'car-model-create' %}">Create</a>
+    <a class="btn btn-primary" href="{% url 'car-create' %}">Create</a>
   </div>
 </div>
-{% regroup car_model_list by car_model as models_list %}
+{% regroup car_list by car_model as models_list %}
 {% for car_model in models_list %}
 <h1>{{car_model.grouper}}</h1>
 
@@ -21,13 +21,13 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Company</th>
+      <th scope="col">vin</th>
     </tr>
   </thead>
     <tbody>
-      {% for car_model in car_model.list %}
+      {% for car in car_model.list %}
       <tr>
-        <th scope="row"><a href="/car_model/{{car_model.id}}">{{car_model.name}}</a></th>
+        <th scope="row"><a href="/car/{{car.id}}">{{car.name}}</a></th>
         <td>{{car.vin_number}}</td>
       </tr>
       {% endfor %}

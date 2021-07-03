@@ -55,6 +55,9 @@ class CarModel(models.Model):
     def get_absolute_url(self):
         return reverse('car-model-detail', kwargs={'pk': self.pk})
 
+    class Meta:
+        ordering = ["-id"]
+
 
 class Company(models.Model):
     name = models.CharField(max_length=100)
