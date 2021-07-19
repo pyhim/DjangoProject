@@ -61,7 +61,7 @@ class CarModelListView(ListView):
         context = super().get_context_data(**kwargs)
         context.update({
             "title": "List of car models",
-
+            "list_len": len(context["carmodel_list"])
         })
         return context
 
@@ -86,14 +86,14 @@ class CompanyDetailView(DetailView):
 class CompanyListView(ListView):
     template_name = 'company_list.html'
 
-    model = CarModel
+    model = Company
     paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
             "title": "List of companies",
-
+            "list_len": len(context["company_list"])
         })
         return context
 

@@ -23,7 +23,7 @@ class Car(models.Model):
         default=types[0],
         max_length=2
     )
-    car_model = models.ForeignKey(
+    carmodel = models.ForeignKey(
         "car.CarModel",
         on_delete=models.SET_NULL,
         null=True,
@@ -31,8 +31,8 @@ class Car(models.Model):
     )
 
     def company(self):
-        if self.car_model:
-            return self.car_model.company
+        if self.carmodel:
+            return self.carmodel.company
         return None
 
     def __str__(self):
@@ -42,7 +42,7 @@ class Car(models.Model):
         return reverse('car-detail', kwargs={'pk': self.pk})
 
     class Meta:
-        ordering = ["car_model"]
+        ordering = ["carmodel"]
 
 
 class CarModel(models.Model):
@@ -56,7 +56,7 @@ class CarModel(models.Model):
         return reverse('car-model-detail', kwargs={'pk': self.pk})
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["company"]
 
 
 class Company(models.Model):
@@ -67,7 +67,6 @@ class Company(models.Model):
 
     class Meta:
         verbose_name_plural = "Companies"
-        ordering = ["-id"]
 
     def get_absolute_url(self):
         return reverse('company-detail', kwargs={'pk': self.pk})

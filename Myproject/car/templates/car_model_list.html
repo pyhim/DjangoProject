@@ -13,21 +13,22 @@
     <a class="btn btn-primary" href="{% url 'car-model-create' %}">Create</a>
   </div>
 </div>
-{% regroup car_model_list by company as company_list %}
-{% for car_model in company_list %}
-<h1>{{car_model.grouper}}</h1>
+{% regroup carmodel_list by company as company_list %}
+{% for company in company_list %}
+<h1>{{company.grouper}}</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Company</th>
     </tr>
   </thead>
     <tbody>
-      {% for car_model in company.list %}
+      {% for carmodel in company_list %}
       <tr>
-        <th scope="row"><a href="/car_model/{{car_model.id}}">{{car_model.name}}</a></th>
-        <td>{{company.name}}</td>
+        <th scope="row"><a href="/carmodel/{{carmodel.id}}">{{carmodel.name}}</a></th>
+        <td>{{carmodel.company}}</td>
       </tr>
       {% endfor %}
     <tbody>

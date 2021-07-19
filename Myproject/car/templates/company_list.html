@@ -7,7 +7,7 @@
   </div>
   <div class="col-4">
     {% now "jS F Y H:i" as date_now %}
-    <h3>{{date_now}}</h3>
+    <h2>{{date_now}}</h2>
   </div>
   <div class="col-4">
     <a class="btn btn-primary" href="{% url 'company-create' %}">Create</a>
@@ -21,11 +21,11 @@
     </tr>
   </thead>
     <tbody>
-      {% for company in company.list %}
+      {% for company in company_list %}
       <tr>
         <th scope="row"><a href="/company/{{company.id}}">{{company.name}}</a></th>
       </tr>
       {% endfor %}
-    <tbody>
+    </tbody>
 </table>
-{% endblock content%}
+{% endblock content %}

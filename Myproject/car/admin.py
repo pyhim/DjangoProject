@@ -8,7 +8,7 @@ class CarAdmin(admin.ModelAdmin):
     list_display = [
         "name",
         "vin_number",
-        "car_model",
+        "carmodel",
         "company",
         'color',
         'made_date',
@@ -21,7 +21,7 @@ class CarAdmin(admin.ModelAdmin):
             )
         }),
         ('Advanced options', {
-            'fields': ("car_model", "company"),
+            'fields': ("carmodel", "company"),
         }),
     )
     readonly_fields = [
