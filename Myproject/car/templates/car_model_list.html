@@ -25,13 +25,13 @@
     </tr>
   </thead>
     <tbody>
-      {% for carmodel in company_list %}
+      {% for carmodel in company.list %}
       <tr>
-        <th scope="row"><a href="/carmodel/{{carmodel.id}}">{{carmodel.name}}</a></th>
+        <th scope="row"><a href="/car_model/{{carmodel.id}}">{{carmodel.name}}</a></th>
         <td>{{carmodel.company}}</td>
       </tr>
       {% endfor %}
     <tbody>
 </table>
 {% endfor %}
-{% endblock content%}
+{% endblock content %}
